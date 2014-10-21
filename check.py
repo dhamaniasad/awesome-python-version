@@ -12,9 +12,13 @@ urls = ["https://pypi.python.org/pypi/" + str(x) for x in names]
 
 
 def getsource(url):
-    open = urllib2.urlopen(url)
-    page_source = open.read()
-    return page_source
+    try:
+        open = urllib2.urlopen(url)
+        page_source = open.read()
+        return page_source
+    except urllib2.HTTPError:
+        page_source = None
+        return page_source
 
 
 for url in urls:
@@ -39,4 +43,4 @@ for url in urls:
         python2 = "py2"
     else:
         python2 = ""
-    print ('%s, %s') % (python2, python3)
+    print('%s : %s, %s') % (url, python2, python3)
