@@ -26,21 +26,24 @@ for url in urls:
                        for i in range(10))
     tempname = tempname + ".html"
     source = getsource(url)
-    file = open('/tmp/%s' % (tempname), 'w')
-    file.write(source)
-    file.close()
-    text = textract.process('/tmp/%s' % (tempname))
-    py3 = "Python :: 3"
-    py = "Python :: 3."
-    if py3 in text:
-        python3 = "py3"
-    elif py in text:
-        python3 = "py3"
+    if source is None:
+        print('%s : Error') % url
     else:
-        python3 = ""
-    py2 = "Python :: 2"
-    if py2 in text:
-        python2 = "py2"
-    else:
-        python2 = ""
-    print('%s : %s, %s') % (url, python2, python3)
+        file = open('/tmp/%s' % (tempname), 'w')
+        file.write(source)
+        file.close()
+        text = textract.process('/tmp/%s' % (tempname))
+        py3 = "Python :: 3"
+        py = "Python :: 3."
+        if py3 in text:
+            python3 = "py3"
+        elif py in text:
+            python3 = "py3"
+        else:
+            python3 = ""
+        py2 = "Python :: 2"
+        if py2 in text:
+            python2 = "py2"
+        else:
+            python2 = ""
+        print('%s : %s, %s') % (url, python2, python3)
