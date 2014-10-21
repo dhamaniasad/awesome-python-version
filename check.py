@@ -40,10 +40,10 @@ for url in urls:
         elif py in text:
             python3 = "py3"
         else:
-            python3 = ""
+            python3 = "cm"  # check manually
         py2 = "Python :: 2"
         if py2 in text:
             python2 = "py2"
         else:
-            python2 = ""
+            python2 = "cm"
         print('%s : %s, %s') % (url, python2, python3)
