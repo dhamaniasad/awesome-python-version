@@ -29,8 +29,14 @@ for url in urls:
     py3 = "Python :: 3"
     py = "Python :: 3."
     if py3 in text:
-        print "True"
+        python3 = "py3"
     elif py in text:
-        print "True"
+        python3 = "py3"
     else:
-        print "False"
+        python3 = ""
+    py2 = "Python :: 2"
+    if py2 in text:
+        python2 = "py2"
+    else:
+        python2 = ""
+    print ('%s, %s') % (python2, python3)
