@@ -27,7 +27,10 @@ for url in urls:
     file.close()
     text = textract.process('/tmp/%s' % (tempname))
     py3 = "Python :: 3"
+    py = "Python :: 3."
     if py3 in text:
-        return True
+        print "True"
+    elif py in text:
+        print "True"
     else:
-        return False
+        print "False"
